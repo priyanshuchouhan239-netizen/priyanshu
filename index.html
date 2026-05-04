@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>KAWAD MEDICAL | Online Pet Store & Veterinary Medicines</title>
+  <meta name="description" content="Order genuine veterinary medicines, pet food, and accessories online from KAWAD MEDICAL in Jodhpur. Fast delivery & best prices.">
+  <meta name="keywords" content="online pet shop Jodhpur, order dog food online, veterinary medicines delivery, KAWAD MEDICAL">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #ffffff; color: #1e2a3e; line-height: 1.5; scroll-behavior: smooth; }
+    :root {
+      --primary: #2c7a4d;
+      --primary-dark: #1e5a3a;
+      --primary-light: #e6f4ea;
+      --gray-light: #f9fafb;
+      --gray-border: #e5e7eb;
+      --text-muted: #4b5563;
+      --star-active: #fbbf24;
+    }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+    .floating-buttons { position: fixed; bottom: 1.5rem; right: 1.5rem; display: flex; flex-direction: column; gap: 1rem; z-index: 1000; }
+    .float-call, .float-wa { display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: var(--primary); color: white; box-shadow: 0 8px 20px rgba(0,0,0,0.2); text-decoration: none; font-size: 1.6rem; }
+    .float-wa { background: #25D366; }
+    .mobile-sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 0.75rem 1rem; box-shadow: 0 -5px 20px rgba(0,0,0,0.1); z-index: 999; border-top: 1px solid var(--gray-border); justify-content: space-between; gap: 0.75rem; }
+    .sticky-btn { flex: 1; background: var(--primary); color: white; text-align: center; padding: 0.85rem 0; border-radius: 60px; font-weight: 600; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; }
+    .sticky-btn-wa { background: #25D366; }
+    @media (max-width: 640px) { .mobile-sticky-cta { display: flex; } .floating-buttons { bottom: 80px; } body { padding-bottom: 70px; } }
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--primary); color: white; padding: 0.85rem 2rem; border-radius: 60px; font-weight: 600; text-decoration: none; transition: 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .btn-secondary { background: transparent; border: 2px solid var(--primary); color: var(--primary); padding: 0.6rem 1.2rem; border-radius: 60px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer; }
+    .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; flex-wrap: wrap; gap: 1rem; }
+    .logo h1 { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links a { text-decoration: none; font-weight: 500; color: var(--primary-dark); }
+    .phone-link { font-weight: 700; background: var(--primary-light); padding: 0.5rem 1.2rem; border-radius: 40px; }
+    .hero { background: linear-gradient(135deg, #f0f9f4 0%, #ffffff 100%); border-radius: 2rem; margin: 2rem 0; padding: 3rem 2rem; display: flex; flex-wrap: wrap; align-items: center; gap: 2rem; }
+    .hero-content { flex: 1; }
+    .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; }
+    .hero h1 span { color: var(--primary); }
+    .rating-badge { background: #fef9e3; border-radius: 60px; padding: 0.5rem 1rem; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; margin-bottom: 1rem; }
+    /* Online Order Products */
+    .products-section { background: var(--gray-light); border-radius: 1.5rem; padding: 2rem; margin: 2rem 0; }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+    .product-card { background: white; border-radius: 1.25rem; padding: 1.2rem; border: 1px solid var(--gray-border); transition: transform 0.2s; }
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+    .product-title { font-weight: 700; font-size: 1.1rem; margin: 0.5rem 0; }
+    .product-price { color: var(--primary); font-weight: 800; font-size: 1.2rem; margin: 0.5rem 0; }
+    .add-to-cart { background: var(--primary); color: white; border: none; padding: 0.5rem 1rem; border-radius: 40px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 0.8rem; }
+    .cart-sidebar { background: white; border-radius: 1.5rem; padding: 1.5rem; border: 1px solid var(--gray-border); margin: 2rem 0; }
+    .cart-item { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid var(--gray-border); }
+    .cart-total { font-weight: 800; font-size: 1.2rem; margin: 1rem 0; text-align: right; }
+    .checkout-form input, .checkout-form textarea { width: 100%; padding: 0.8rem; margin: 0.5rem 0; border-radius: 1rem; border: 1px solid var(--gray-border); }
+    .order-message { margin-top: 1rem; font-size: 0.9rem; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+    .service-item { background: var(--primary-light); border-radius: 1.25rem; padding: 1.5rem 1rem; text-align: center; }
+    .location-card { background: var(--gray-light); border-radius: 1.5rem; padding: 2rem; display: flex; flex-wrap: wrap; gap: 2rem; align-items: stretch; }
+    .map-container { flex: 1; min-width: 260px; border-radius: 1.2rem; overflow: hidden; }
+    .map-container iframe { width: 100%; height: 280px; border: 0; }
+    .faq-item { background: white; border: 1px solid var(--gray-border); border-radius: 1rem; margin-bottom: 1rem; padding: 1rem 1.5rem; }
+    footer { background: #1f2a3e; color: #cbd5e1; padding: 2rem 0; text-align: center; margin-top: 3rem; }
+    .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; }
+    @media (max-width: 768px) { .hero h1 { font-size: 2rem; } .section-title { font-size: 1.8rem; } }
+  </style>
+</head>
+<body>
+
+<div class="mobile-sticky-cta">
+  <a href="tel:07073789964" class="sticky-btn"><i class="fas fa-phone-alt"></i> Call Now</a>
+  <a href="https://wa.me/917073789964?text=I%20want%20to%20place%20an%20order" target="_blank" class="sticky-btn sticky-btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp Order</a>
+</div>
+<div class="floating-buttons">
+  <a href="tel:07073789964" class="float-call"><i class="fas fa-phone-alt"></i></a>
+  <a href="https://wa.me/917073789964?text=Hello" class="float-wa"><i class="fab fa-whatsapp"></i></a>
+</div>
+
+<main>
+  <div class="container">
+    <!-- Navbar -->
+    <div class="navbar">
+      <div class="logo"><h1>🐾 KAWAD MEDICAL</h1></div>
+      <div class="nav-links">
+        <a href="#order-online"><i class="fas fa-shopping-cart"></i> Order Online</a>
+        <a href="#location-section"><i class="fas fa-directions"></i> Directions</a>
+        <a href="tel:07073789964" class="phone-link"><i class="fas fa-phone-alt"></i> 070737 89964</a>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-content">
+        <div class="rating-badge">⭐⭐⭐⭐⭐ 4.7 ★ (70+ reviews)</div>
+        <h1>Trusted Veterinary Medicines & Pet Care in <span>Jodhpur</span> 🐶🐄</h1>
+        <p style="font-size:1.2rem; color:var(--text-muted);">Genuine products, best prices, and expert guidance for your pet health. <strong>Order online for home delivery!</strong></p>
+        <div class="hero-buttons" style="display:flex; gap:1rem; margin-top:1.5rem;">
+          <a href="tel:07073789964" class="btn-primary"><i class="fas fa-phone-alt"></i> Call Now</a>
+          <a href="https://wa.me/917073789964?text=I%20want%20to%20place%20an%20order" target="_blank" class="btn-primary" style="background:#25D366;"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a>
+        </div>
+        <p style="margin-top:1rem;"><a href="#order-online" style="color:var(--primary); font-weight:500;">🛒 Browse products & add to cart →</a></p>
+      </div>
+      <div style="flex:0.4; text-align:center;"><i class="fas fa-dog" style="font-size:100px; color:var(--primary); opacity:0.7;"></i></div>
+    </div>
+
+    <!-- ONLINE ORDER SYSTEM SECTION -->
+    <div id="order-online">
+      <h2 class="section-title">🛍️ Online Order – Shop Now</h2>
+      <div class="products-section">
+        <h3>🐕 Pet Food & Medicines</h3>
+        <div class="products-grid" id="productsGrid"></div>
+        <!-- Cart Section -->
+        <div class="cart-sidebar" id="cartSection">
+          <h3><i class="fas fa-shopping-cart"></i> Your Cart</h3>
+          <div id="cartItemsList"></div>
+          <div id="cartTotal" class="cart-total">Total: ₹0</div>
+          <button id="checkoutBtn" class="btn-primary" style="width:100%;">📦 Proceed to Order</button>
+        </div>
+        <!-- Checkout Form (hidden initially) -->
+        <div id="checkoutForm" style="display:none; margin-top:1.5rem; background:white; border-radius:1.5rem; padding:1.5rem;">
+          <h3>📍 Delivery Details</h3>
+          <div class="checkout-form">
+            <input type="text" id="customerName" placeholder="Full Name" required>
+            <input type="tel" id="customerPhone" placeholder="Phone Number" required>
+            <textarea id="customerAddress" rows="2" placeholder="Complete Address (Area, Landmark)"></textarea>
+            <input type="text" id="customerCity" placeholder="City (e.g., Jodhpur)" value="Jodhpur">
+            <button id="placeOrderBtn" class="btn-primary"><i class="fab fa-whatsapp"></i> Confirm Order via WhatsApp</button>
+            <button id="cancelOrderBtn" class="btn-secondary" style="margin-left:0.5rem;">Cancel</button>
+          </div>
+          <div id="orderStatus" class="order-message"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reviews & Rating (keep existing) -->
+    <div style="background:var(--gray-light); border-radius:1.5rem; padding:2rem; margin:2rem 0;">
+      <h2 class="section-title">⭐ Customer Reviews</h2>
+      <div id="reviewsList" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem;"></div>
+      <div style="margin-top:1.5rem;">
+        <h3>Share Your Experience</h3>
+        <input type="text" id="reviewerName" placeholder="Your Name" style="padding:0.5rem; margin-right:1rem;">
+        <select id="reviewRating"><option value="5">★★★★★ (5)</option><option value="4">★★★★☆ (4)</option><option value="3">★★★☆☆ (3)</option></select>
+        <textarea id="reviewComment" placeholder="Your comment..." rows="2" style="width:100%; margin:0.5rem 0;"></textarea>
+        <button id="submitReviewBtn" class="btn-primary">Submit Review</button>
+      </div>
+    </div>
+
+    <!-- About, Services, Why Us, Location, FAQ (condensed but same info) -->
+    <div><h2 class="section-title">🏥 About KAWAD MEDICAL</h2><p>Near Ansal Royal Plaza, Sojati Gate, Jodhpur. We provide genuine vet medicines, pet food & accessories at best prices.</p></div>
+    <div class="services-grid"><div class="service-item"><i class="fas fa-capsules"></i><h3>Vet Medicines</h3></div><div class="service-item"><i class="fas fa-bone"></i><h3>Pet Food</h3></div><div class="service-item"><i class="fas fa-paw"></i><h3>Accessories</h3></div></div>
+    <div class="why-us" style="padding:1.5rem; background:white; border:1px solid var(--gray-border); border-radius:1.5rem;"><h3>Why Choose Us</h3><ul><li>✅ 100% Genuine Products</li><li>💰 Best Prices</li><li>🚚 Fast Delivery (Local)</li></ul></div>
+
+    <div id="location-section"><h2 class="section-title">📍 Visit / Delivery Area</h2><div class="location-card"><div><p><strong>Sojati Gate, High Court Rd, Near Ansal Royal Plaza, Jodhpur - 342001</strong></p><p>Open: 9AM-8PM | Call for delivery outside Jodhpur.</p><a href="https://maps.google.com/?q=Sojati+Gate+Jodhpur" target="_blank" class="btn-primary" style="background:#4285F4;">Get Directions</a></div><div class="map-container"><iframe src="https://maps.google.com/maps?q=Sojati%20Gate%2C%20Jodhpur&t=&z=17&output=embed"></iframe></div></div></div>
+
+    <div class="faq-item"><div class="faq-question">❓ How to order online?</div><p>Add products to cart, fill address, and confirm via WhatsApp. We’ll call to confirm delivery.</p></div>
+  </div>
+</main>
+<footer><div class="container"><p>© 2025 KAWAD MEDICAL — Online Pet Store & Vet Medicines, Jodhpur | 📞 070737 89964</p></div></footer>
+
+<script>
+  // Product Catalog
+  const products = [
+    { id: 1, name: "Vetcare Antibiotic Spray", price: 199, category: "Medicine", icon: "fa-spray-can" },
+    { id: 2, name: "Royal Canin Dog Food (1kg)", price: 450, category: "Food", icon: "fa-dog" },
+    { id: 3, name: "Pet Vitamins + Multivitamin", price: 320, category: "Medicine", icon: "fa-capsules" },
+    { id: 4, name: "Non-Stick Dog Bowl", price: 180, category: "Accessory", icon: "fa-bowl-food" },
+    { id: 5, name: "Deworming Tablet (pack of 4)", price: 120, category: "Medicine", icon: "fa-tablets" },
+    { id: 6, name: "Pedigree Adult Dog Food 1.2kg", price: 350, category: "Food", icon: "fa-bone" }
+  ];
+
+  let cart = [];
+
+  function renderProducts() {
+    const grid = document.getElementById('productsGrid');
+    if(!grid) return;
+    grid.innerHTML = '';
+    products.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <i class="fas ${p.icon}" style="font-size:2rem; color:var(--primary);"></i>
+        <div class="product-title">${p.name}</div>
+        <div class="product-price">₹${p.price}</div>
+        <button class="add-to-cart" data-id="${p.id}">Add to Cart</button>
+      `;
+      grid.appendChild(card);
+    });
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = parseInt(btn.getAttribute('data-id'));
+        addToCart(id);
+      });
+    });
+  }
+
+  function addToCart(id) {
+    const product = products.find(p => p.id === id);
+    if(product) {
+      const existing = cart.find(item => item.id === id);
+      if(existing) existing.quantity += 1;
+      else cart.push({ ...product, quantity: 1 });
+      updateCartUI();
+      showTemporaryMessage("✅ " + product.name + " added to cart!");
+    }
+  }
+
+  function updateCartUI() {
+    const cartDiv = document.getElementById('cartItemsList');
+    const totalSpan = document.getElementById('cartTotal');
+    if(!cartDiv) return;
+    if(cart.length === 0) {
+      cartDiv.innerHTML = '<p>Cart is empty. Add some products!</p>';
+      totalSpan.innerHTML = 'Total: ₹0';
+      return;
+    }
+    let html = '';
+    let total = 0;
+    cart.forEach((item, idx) => {
+      const itemTotal = item.price * item.quantity;
+      total += itemTotal;
+      html += `
+        <div class="cart-item">
+          <span>${item.name} x ${item.quantity}</span>
+          <span>₹${itemTotal} 
+            <button class="remove-item" data-idx="${idx}" style="background:none; border:none; color:#c2410c; cursor:pointer;"><i class="fas fa-trash-alt"></i></button>
+          </span>
+        </div>
+      `;
+    });
+    cartDiv.innerHTML = html;
+    totalSpan.innerHTML = `Total: ₹${total}`;
+    document.querySelectorAll('.remove-item').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const idx = parseInt(btn.getAttribute('data-idx'));
+        cart.splice(idx, 1);
+        updateCartUI();
+      });
+    });
+  }
+
+  function showTemporaryMessage(msg) {
+    const msgDiv = document.createElement('div');
+    msgDiv.innerText = msg;
+    msgDiv.style.position = 'fixed'; msgDiv.style.bottom = '100px'; msgDiv.style.right = '20px'; msgDiv.style.background = '#2c7a4d'; msgDiv.style.color = 'white'; msgDiv.style.padding = '0.8rem 1.2rem'; msgDiv.style.borderRadius = '60px'; msgDiv.style.zIndex = '2000';
+    document.body.appendChild(msgDiv);
+    setTimeout(() => msgDiv.remove(), 2000);
+  }
+
+  let checkoutVisible = false;
+  const checkoutFormDiv = document.getElementById('checkoutForm');
+  const checkoutBtn = document.getElementById('checkoutBtn');
+  checkoutBtn.addEventListener('click', () => {
+    if(cart.length === 0) {
+      showTemporaryMessage("❌ Cart is empty! Add items first.");
+      return;
+    }
+    if(checkoutVisible) {
+      checkoutFormDiv.style.display = 'none';
+      checkoutVisible = false;
+    } else {
+      checkoutFormDiv.style.display = 'block';
+      checkoutVisible = true;
+    }
+  });
+  document.getElementById('cancelOrderBtn')?.addEventListener('click', () => {
+    checkoutFormDiv.style.display = 'none';
+    checkoutVisible = false;
+  });
+
+  document.getElementById('placeOrderBtn')?.addEventListener('click', () => {
+    const name = document.getElementById('customerName').value.trim();
+    const phone = document.getElementById('customerPhone').value.trim();
+    const address = document.getElementById('customerAddress').value.trim();
+    const city = document.getElementById('customerCity').value.trim();
+    if(!name || !phone || !address) {
+      document.getElementById('orderStatus').innerHTML = '<span style="color:red;">Please fill all fields (Name, Phone, Address).</span>';
+      return;
+    }
+    if(cart.length === 0) {
+      document.getElementById('orderStatus').innerHTML = '<span style="color:red;">Cart is empty.</span>';
+      return;
+    }
+    let itemsList = '';
+    let totalAmount = 0;
+    cart.forEach(item => {
+      itemsList += `✓ ${item.name} x ${item.quantity} = ₹${item.price * item.quantity}\n`;
+      totalAmount += item.price * item.quantity;
+    });
+    const orderMsg = `🛒 *NEW ONLINE ORDER* from KAWAD MEDICAL\n\n*Customer:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}, ${city}\n\n*Items:*\n${itemsList}\n*Total:* ₹${totalAmount}\n\n📍 Delivery preferred: ASAP (Store will confirm)`;
+    const encodedMsg = encodeURIComponent(orderMsg);
+    const whatsappUrl = `https://wa.me/917073789964?text=${encodedMsg}`;
+    window.open(whatsappUrl, '_blank');
+    document.getElementById('orderStatus').innerHTML = '<span style="color:green;">✅ Order sent via WhatsApp! We will contact you shortly.</span>';
+    // Optionally reset cart after order? We'll keep but give option.
+    setTimeout(() => {
+      if(confirm("Order placed! Do you want to clear your cart?")) {
+        cart = [];
+        updateCartUI();
+        checkoutFormDiv.style.display = 'none';
+        checkoutVisible = false;
+        document.getElementById('orderStatus').innerHTML = '';
+        document.getElementById('customerName').value = '';
+        document.getElementById('customerPhone').value = '';
+        document.getElementById('customerAddress').value = '';
+      }
+    }, 500);
+  });
+
+  // Review System (basic storage)
+  let userReviews = [
+    { name: "Rajesh S.", rating: 5, comment: "Excellent products and fast service!", date: "Apr 2025" },
+    { name: "Priyanka M.", rating: 5, comment: "Authentic medicines and pet food.", date: "Mar 2025" },
+    { name: "Ankit T.", rating: 4, comment: "Good experience with online order.", date: "Mar 2025" }
+  ];
+  function renderReviews() {
+    const container = document.getElementById('reviewsList');
+    if(!container) return;
+    container.innerHTML = '';
+    userReviews.slice().reverse().forEach(rev => {
+      let stars = '★'.repeat(rev.rating) + '☆'.repeat(5-rev.rating);
+      const div = document.createElement('div');
+      div.className = 'review-card';
+      div.style.background = 'white'; div.style.padding = '1rem'; div.style.borderRadius = '1rem'; div.style.border = '1px solid #e5e7eb';
+      div.innerHTML = `<div style="color:#fbbf24;">${stars}</div><p>“${escapeHtml(rev.comment)}”</p><strong>- ${escapeHtml(rev.name)}</strong> <small>${rev.date}</small>`;
+      container.appendChild(div);
+    });
+  }
+  function escapeHtml(str) { return str.replace(/[&<>]/g, function(m){if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+  document.getElementById('submitReviewBtn')?.addEventListener('click', () => {
+    const name = document.getElementById('reviewerName').value.trim();
+    const rating = parseInt(document.getElementById('reviewRating').value);
+    const comment = document.getElementById('reviewComment').value.trim();
+    if(!name || !comment) { alert("Please enter name and comment."); return; }
+    const now = new Date(); const month = now.toLocaleString('default', { month: 'short' }); const year = now.getFullYear();
+    userReviews.push({ name, rating, comment, date: `${month} ${year}` });
+    renderReviews();
+    document.getElementById('reviewerName').value = '';
+    document.getElementById('reviewComment').value = '';
+    alert("Thank you for your review!");
+  });
+  renderReviews();
+  renderProducts();
+  updateCartUI();
+</script>
+</body>
+</html>
